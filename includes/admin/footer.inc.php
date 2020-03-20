@@ -1,0 +1,1 @@
+<p style="padding: 1px;">&copy;CopyRights All Rights Reserved : Online Examination: 2016</p>
