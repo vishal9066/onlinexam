@@ -36,7 +36,7 @@ require_once '../includes/member/secure.inc.php';
     move_uploaded_file($temp_name, '../upload/'.$file_name);
     $query = "update users set photo ='$file_name'where user_name='$user_name'";
     require_once '../includes/db.inc.php';
-    if (@mysql_query($query)) {
+    if (@mysqli_query($conn,$query)) {
     $status = 1;
 }
  else {

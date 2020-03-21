@@ -47,10 +47,10 @@ $subject = $_SESSION['subject'];
                     <?php 
                     $query = "select * from $subject where sno = $sno";
                     require_once '../includes/db2.inc.php';
-                    $result = @mysql_query($query);
-                    if(mysql_num_rows($result)==1)
+                    $result = @mysqli_query($conn,$query);
+                    if(mysqli_num_rows($result)==1)
                     {
-                    $row = @mysql_fetch_assoc($result);
+                    $row = @mysqli_fetch_assoc($result);
                     } 
                     { 
                     ?>

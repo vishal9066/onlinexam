@@ -30,7 +30,7 @@ require_once '../includes/admin/secure.inc.php';
     )";
             
         require_once '../includes/db2.inc.php';
-        mysql_query($query);
+        mysqli_query($conn,$query);
         
         $status = 1;
     }

@@ -4,7 +4,7 @@ $subject = $_REQUEST['subject'];
 $query = "drop table $subject";
 require_once '../includes/db2.inc.php';
 {
-    mysql_query($query);
+    mysqli_query($conn,$query);
     $status = 1;
 }
 ?>

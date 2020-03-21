@@ -11,16 +11,16 @@ for($i=1;$i<=$_SESSION['arraycount'];$i++)
         $j=$_REQUEST[$i];
         $query = "update $subject set given_answer ='$j'where sno='$i'";
         require_once '../includes/db2.inc.php';
-        @mysql_query($query);  
+        @mysqli_query($conn,$query);  
     }
 ?>
 <?php 
                 $res = 0;
                 $query = "select * from $subject ";
                 require_once '../includes/db2.inc.php';
-                $result = mysql_query($query);
+                $result = mysqli_query($conn,$query);
                 
-                while ($row = mysql_fetch_assoc($result)) {
+                while ($row = mysqli_fetch_assoc($result)) {
                     
                 //echo $row['given_answer'].'<br>';
                 //echo $row['correct_answer'].'<br>';
@@ -34,7 +34,7 @@ for($i=1;$i<=$_SESSION['arraycount'];$i++)
                 $wrong=$_SESSION['arraycount']- $res;
                 $query = "insert into result values('$subject','$user_name','$total','$res','$wrong','$date')";
                 require_once '../includes/db.inc.php';
-                mysql_query($query);
+                mysqli_query($conn,$query);
                 
                 
             ?>

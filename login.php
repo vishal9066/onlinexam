@@ -7,9 +7,9 @@ if (isset($_POST['submit'])) {
     $password = sha1($password);
     $query = "select * from users where user_name='$user_name' and password='$password'";
     require_once './includes/db.inc.php';
-    $result = mysql_query($query);
-    if (mysql_num_rows($result) == 1) {
-        $row = mysql_fetch_assoc($result);
+    $result = @mysqli_query($conn,$query);
+    if (@mysqli_num_rows($result) == 1) {
+        $row = @mysqli_fetch_assoc($result);
         if ($row['verified'] == 'Y') {
             session_start();
             $name = $row['name'];

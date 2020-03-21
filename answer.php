@@ -5,9 +5,9 @@ $template = 0;
 $subject = 'demo'; 
 $query = "select  * from $subject ";
 require_once './includes/db.inc.php';
-$result = mysql_query($query);
+$result = @mysqli_query($conn,$query);
 $arraycount = 0;
-while ($row = mysql_fetch_row($result)) {
+while ($row = @mysqli_fetch_row($result)) {
     $tablenames[$arraycount] = $row[0];
     $arraycount++;
 }
@@ -17,16 +17,16 @@ for($i=1;$i<=$arraycount;$i++)
         $j=$_REQUEST[$i];
         $query = "update $subject set given_answer ='$j'where sno='$i'";
         require_once './includes/db.inc.php';
-        @mysql_query($query);  
+        @mysqli_query($conn,$query);  
     }
 ?>
 <?php 
                 $res = 0;
                 $query = "select * from $subject ";
                 require_once './includes/db.inc.php';
-                $result = mysql_query($query);
+                $result = @mysqli_query($conn,$query);
                 
-                while ($row = mysql_fetch_assoc($result)) {
+                while ($row = @mysqli_fetch_assoc($result)) {
                 if($row['correct_answer'] == $row['given_answer'])
                 {   
                 $res++;

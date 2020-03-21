@@ -6,9 +6,15 @@ $temporary = 0;
 $subject = 'demo';
 $query = "select * from $subject";
     require_once './includes/db.inc.php';
-    $result = @mysql_query($query);
+    
+    
+    $result = mysqli_query($conn,$query);
     $temp = 0;
-    if(@mysql_num_rows($result)>0){
+    if (mysqli_num_rows( $result)>0)
+        
+   
+    
+    {
         $temp = 1;
     }
 
@@ -51,7 +57,7 @@ $query = "select * from $subject";
             <p class="error" style="text-align:center;">Note : Option A is Selected Automatically.</p>
             <div id="accordion">
                 <?php
-                    while ($row = mysql_fetch_assoc($result)) { 
+                    while ($row = @mysqli_fetch_assoc($result)) { 
                 ?>
                 <p>Question No. <?php echo $row['sno']; ?></p>
                 <div>

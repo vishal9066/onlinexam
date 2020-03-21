@@ -6,12 +6,12 @@
         $user_name =$_POST['user_name'];
         $query = "select * from users where user_name = '$user_name'";
         require_once 'includes/db.inc.php';
-        $result = mysql_query($query);
-        if (mysql_num_rows($result)==1) {
+        $result = @mysqli_query($conn,$query);
+        if (@mysqli_num_rows($result)==1) {
             $template = 2;
             $query = "select * from users where user_name='$user_name'";
-            $result = mysql_query($query);
-            $row = mysql_fetch_assoc($result);
+            $result = @mysqli_query($conn,$query);
+            $row = @mysqli_fetch_assoc($result);
             $question = $row['question'];
         }
         else {
@@ -27,8 +27,8 @@
         $answers = sha1($answer);
         $query = "select * from users where user_name = '$user_name' and answer = '$answers'";
         require_once 'includes/db.inc.php';
-        $result = mysql_query($query);
-        if(mysql_num_rows($result)==1)
+        $result = mysqli_query($conn,$query);
+        if(@mysqli_num_rows($result)==1)
         {
             $template = 3;
             $str = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
@@ -36,10 +36,10 @@
             $password = substr($str, 0,8);
             $data = sha1($password);
             $query = "update users set password = '$data' where user_name = '$user_name'";
-            mysql_query($query);
+            @mysqli_query($conn,$query);
             $query = "select * from users where user_name = '$user_name'";
-            $result = mysql_query($query);
-            $row = mysql_fetch_assoc($result);
+            $result = @mysqli_query($conn,$query);
+            $row = @mysqli_fetch_assoc($result);
             $email = $row['email'];
             $message = '<p>Your Password is : '.$password.'</p>';
             $subject = 'Changed Password' ;

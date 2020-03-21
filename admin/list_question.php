@@ -6,9 +6,9 @@ $subject = $_REQUEST['subject'];
 $_SESSION['subject'] = $subject;
 $query = "select * from $subject";
     require_once '../includes/db2.inc.php';
-    $result = @mysql_query($query);
+    $result = @mysqli_query($conn,$query);
     $status = 0;
-    if(@mysql_num_rows($result)>0){
+    if(@mysqli_num_rows($result)>0){
         $status = 1;
     }
 ?>
@@ -62,10 +62,10 @@ $query = "select * from $subject";
                 $user_name = $_SESSION['user_name'];
                 $queryy = "select * from users where user_name= '$user_name'";
                 require_once '../includes/db.inc.php';
-                $resultt = @mysql_query($queryy);
-                if(mysql_num_rows($resultt)==1)
+                $resultt = @mysqli_query($conn,$queryy);
+                if(mysqli_num_rows($resultt)==1)
                 {
-                $roww = mysql_fetch_assoc($resultt);
+                $roww = mysqli_fetch_assoc($resultt);
                 }
                 ?>
                     <h3 style="margin-left: 10px;">Welcome <?php echo $_SESSION['name']; ?></h3>
@@ -96,7 +96,7 @@ $query = "select * from $subject";
                         </tr>
                     </thead>
                     <?php
-                    while ($row = mysql_fetch_assoc($result)) {
+                    while ($row = mysqli_fetch_assoc($result)) {
                         ?>
                         <tbody>
                             <tr>

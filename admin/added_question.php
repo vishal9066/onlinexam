@@ -12,7 +12,7 @@ $status = 0;
     $correct_answer = $_POST['correct_answer'];
     $query = "INSERT INTO $subject(sno,question, a, b, c, d, correct_answer) VALUES ($sno,'$question','$a','$b','$c','$d','$correct_answer')";
     require_once '../includes/db2.inc.php';
-    mysql_query($query);
+    mysqli_query($conn,$query);
     $status = 1;
     }
 ?>

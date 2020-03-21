@@ -6,10 +6,10 @@ $status = 0;
 $template = 0;
 $query = "select  * from $subject ";
 require_once '../includes/db2.inc.php';
-$result = mysql_query($query);
+$result = mysqli_query($conn,$query);
 //$tablenames[] = array();
 $arraycount = 0;
-while ($row = mysql_fetch_row($result)) {
+while ($row = mysqli_fetch_row($result)) {
     $tablenames[$arraycount] = $row[0];
     $arraycount++;
     $status = 1;

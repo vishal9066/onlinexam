@@ -77,8 +77,8 @@
         {
             $query = "select * from users where user_name='$user_name'"; 
             require_once 'includes/db.inc.php';
-            $result = mysql_query($query);
-            if(mysql_num_rows($result)==1)
+            $result = @mysqli_query($conn,$query);
+            if(@mysqli_num_rows($result)==1)
             {
                 $errors['user_name'] = '*User Name Already Exists';
             }
@@ -92,7 +92,7 @@
             $answer = sha1($answer);
             $query = "insert into users values('$user_name','$password','member','$name','$email','$mobile_number','$gender','$question','$answer','$verification_code','N','avatar.png')";
             require_once 'includes/db.inc.php';
-            mysql_query($query);
+            @mysqli_query($conn,$query);
             $template = 2;
             $message =   '<p>Registration Successful</p>'.'<p>Verification Link <a href="http://vishalworld.16mb.com/verify.php?user_name='.$user_name.'&code='.$verification_code.'">Click here to verify</a></p>';
             $subject =  'Complete Your Verification'; 
@@ -116,8 +116,8 @@
             $mailer->Username = 'vk9897851898@gmail.com';
             $mailer->Password = 'xyz123';
 
-            $mailer->Send();*/           
-            mail($email, $subject, $message);
+            $mailer->Send();           
+            mail($email, $subject, $message); */
         }
         
     }

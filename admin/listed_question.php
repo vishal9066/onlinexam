@@ -55,9 +55,9 @@ require_once '../includes/admin/secure.inc.php';
         <?php
             $query = "select * from $subject";
             require_once '../includes/db2.inc.php';
-            $result = @mysql_query($query);
+            $result = @mysqli_query($conn,$query);
             $status = 0;
-            if(@mysql_num_rows($result)>0){
+            if(@mysqli_num_rows($result)>0){
             $status = 1;
             }
             ?>
@@ -81,7 +81,7 @@ require_once '../includes/admin/secure.inc.php';
                 </tr>
                 </thead>
                 <?php
-                        while ($row = mysql_fetch_assoc($result)) {
+                        while ($row = mysqli_fetch_assoc($result)) {
                 ?>
                 <tbody>
                 <tr>

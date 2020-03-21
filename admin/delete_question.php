@@ -4,6 +4,6 @@ $subject = $_SESSION['subject'];
 $sno = $_REQUEST['sno'];
 $query = "delete from $subject where sno=$sno";
     require_once '../includes/db2.inc.php';
-    mysql_query($query);
+    mysqli_query($conn,$query);
     header('Location: list_question.php?subject='.$subject.'');
 ?>

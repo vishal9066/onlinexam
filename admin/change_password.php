@@ -13,8 +13,8 @@ if(isset($_POST['submit']))
     require_once '../includes/db.inc.php';
     $user_name = $_SESSION['user_name'];
     $query = "select * from users where user_name = '$user_name' and password = '$current_password'";
-    $result = mysql_query($query);
-    if(mysql_num_rows($result) == 1) 
+    $result = @mysqli_query($conn,$query);
+    if(@mysqli_num_rows($result) == 1) 
         {
         if ($new_password != $confirm_password) {
             $status = 1;

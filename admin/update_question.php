@@ -10,7 +10,7 @@
     $correct_answer = $_REQUEST['correct_answer']; 
     $query = "update $subject set question='$question', a='$a', b='$b', c='$c', d='$d',correct_answer='$correct_answer' where sno='$sno'";
     require_once '../includes/db2.inc.php';
-    @mysql_query($query);
+    @mysqli_query($conn,$query);
     //Redirecting the Browser
     header('Location: listed_question.php');      
 ?>
