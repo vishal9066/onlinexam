@@ -1,20 +1,22 @@
 -- phpMyAdmin SQL Dump
--- version 4.2.11
--- http://www.phpmyadmin.net
+-- version 4.8.5
+-- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 28, 2009 at 06:08 AM
--- Server version: 5.6.21
--- PHP Version: 5.6.3
+-- Generation Time: Mar 21, 2020 at 07:03 AM
+-- Server version: 10.1.39-MariaDB
+-- PHP Version: 7.3.5
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
+/*!40101 SET NAMES utf8mb4 */;
 
 --
 -- Database: `u573750671_vk`
@@ -26,7 +28,7 @@ SET time_zone = "+00:00";
 -- Table structure for table `demo`
 --
 
-CREATE TABLE IF NOT EXISTS `demo` (
+CREATE TABLE `demo` (
   `sno` int(255) NOT NULL,
   `question` varchar(255) NOT NULL,
   `a` varchar(255) NOT NULL,
@@ -50,7 +52,7 @@ INSERT INTO `demo` (`sno`, `question`, `a`, `b`, `c`, `d`, `correct_answer`, `gi
 -- Table structure for table `result`
 --
 
-CREATE TABLE IF NOT EXISTS `result` (
+CREATE TABLE `result` (
   `subject` varchar(255) NOT NULL,
   `user_name` varchar(255) NOT NULL,
   `total` varchar(255) NOT NULL,
@@ -81,7 +83,8 @@ INSERT INTO `result` (`subject`, `user_name`, `total`, `result`, `wrong`, `date`
 ('PIC', 'user', '3', '0', '3', '27-Nov-2009 11:14:14 PM'),
 ('PIC', 'user1', '3', '1', '2', '27-Nov-2009 11:15:11 PM'),
 ('HACKING', 'user1', '3', '3', '0', '27-Nov-2009 11:15:47 PM'),
-('PIC', 'user', '3', '0', '3', '28-Nov-2009 05:33:47 AM');
+('PIC', 'user', '3', '0', '3', '28-Nov-2009 05:33:47 AM'),
+('GK', 'user', '4', '2', '2', '21-Mar-2020 06:52:05 AM');
 
 -- --------------------------------------------------------
 
@@ -89,7 +92,7 @@ INSERT INTO `result` (`subject`, `user_name`, `total`, `result`, `wrong`, `date`
 -- Table structure for table `users`
 --
 
-CREATE TABLE IF NOT EXISTS `users` (
+CREATE TABLE `users` (
   `user_name` varchar(40) NOT NULL,
   `password` varchar(100) NOT NULL,
   `role_name` varchar(20) NOT NULL,
@@ -109,11 +112,12 @@ CREATE TABLE IF NOT EXISTS `users` (
 --
 
 INSERT INTO `users` (`user_name`, `password`, `role_name`, `name`, `email`, `mobile_number`, `gender`, `question`, `answer`, `verification_code`, `verified`, `photo`) VALUES
-('vishal', '7c4a8d09ca3762af61e59520943dc26494f8941b', 'admin', 'Vishal Kumar', 'vishalkumar.8193@gmail.com', '9897544995', 'Male', 'Favourite Movie', 'NO', '', 'Y', '4dKbjMmVeYUa8iRcF9T5.jpg'),
-('user', '7c4a8d09ca3762af61e59520943dc26494f8941b', 'member', 'user name', 'user@gmail.com', '9876543210', 'Male', 'Favourite Movie', 'user', 'jksdfsdjbfjsdkfavdasd7232r', 'Y', '5z3QmwSYELMVNoZcdGjs.jpg'),
+('vishal', '7c4a8d09ca3762af61e59520943dc26494f8941b', 'admin', 'Vishal Kumar', 'vishalkumar.8193@gmail.com', '9897544995', 'Male', 'Favourite Movie', 'NO', '', 'Y', 'yzmR9ScOaDsbjgt458MC.jpg'),
+('user', '7c222fb2927d828af22f592134e8932480637c0d', 'member', 'user name', 'user@gmail.com', '9876543210', 'Male', 'Favourite Movie', 'user', 'jksdfsdjbfjsdkfavdasd7232r', 'Y', 'PABfVFrO2oHlMLY9DZXh.jpg'),
 ('user1', '7c4a8d09ca3762af61e59520943dc26494f8941b', 'member', 'user1', 'dsf@jdwh.fg', '9876543210', 'Male', 'hacker', '4dcc4173d80a2817206e196a38f0dbf7850188ff', 'gtNZx5MIcdT9YSyi3BXQ', 'Y', 'lbnr1eREvHI4ZTSW6VM5.jpg'),
 ('user2', '7c4a8d09ca3762af61e59520943dc26494f8941b', 'member', 'vishal', 'vk9897851898@gmail.com', '9897544995', 'Male', 'fav. book', '1d7d3458c4d94e1013a9872dbd5fe0865ba6a124', 'WbRiAxyQqc3TZrkvHel8', 'Y', 'BjdylNcUuxgOZvDWKG2X.jpg'),
-('cyberhax', '7c4a8d09ca3762af61e59520943dc26494f8941b', 'member', 'CyberHax', 'cyberhax@gmail.com', '9876543210', 'Male', 'first name', '84e251d2fbc04b522786147b3ab8cde294e84c47', 'CxFZpd2nuJwVmSRNL4aW', 'Y', '8iKeSIT6a2Dgs3lJ7NGu.jpg');
+('cyberhax', '7c4a8d09ca3762af61e59520943dc26494f8941b', 'member', 'CyberHax', 'cyberhax@gmail.com', '9876543210', 'Male', 'first name', '84e251d2fbc04b522786147b3ab8cde294e84c47', 'CxFZpd2nuJwVmSRNL4aW', 'Y', '8iKeSIT6a2Dgs3lJ7NGu.jpg'),
+('kumar123', '7c4a8d09ca3762af61e59520943dc26494f8941b', 'member', 'vishal kumar', 'djedhh@gdg.com', '9876543210', 'Male', 'who are you?', 'b1c1d8736f20db3fb6c1c66bb1455ed43909f0d8', '0fOshEzkovDVpBj4iNya', 'N', 'avatar.png');
 
 --
 -- Indexes for dumped tables
@@ -123,13 +127,14 @@ INSERT INTO `users` (`user_name`, `password`, `role_name`, `name`, `email`, `mob
 -- Indexes for table `demo`
 --
 ALTER TABLE `demo`
- ADD PRIMARY KEY (`sno`);
+  ADD PRIMARY KEY (`sno`);
 
 --
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
- ADD PRIMARY KEY (`user_name`);
+  ADD PRIMARY KEY (`user_name`);
+COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
