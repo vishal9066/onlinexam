@@ -4,10 +4,10 @@ $status = 0;
 $template = 0;
 $query = "show  tables from u573750671_ques ";
 require_once '../includes/db2.inc.php';
-$result = mysql_query($query);
+$result = mysqli_query($conn,$query);
 //$tablenames[] = array();
 $arraycount = 0;
-while ($row = mysql_fetch_row($result)) {
+while ($row = mysqli_fetch_row($result)) {
     $tablenames[$arraycount] = $row[0];
     $arraycount++;
     $status = 1;
@@ -18,9 +18,9 @@ $temporary = 0;
 $subject = $_SESSION['subject'];
 $query = "select * from $subject";
     require_once '../includes/db2.inc.php';
-    $result = @mysql_query($query);
+    $result = @mysqli_query($conn,$query);
     $temp = 0;
-    if(@mysql_num_rows($result)>0){
+    if(@mysqli_num_rows($result)>0){
         $temp = 1;
     }
 
@@ -61,10 +61,10 @@ $query = "select * from $subject";
                 $user_name = $_SESSION['user_name'];
                 $queryy = "select * from users where user_name= '$user_name'";
                 require_once '../includes/db.inc.php';
-                $resultt = @mysql_query($queryy);
-                if(mysql_num_rows($resultt)==1)
+                $resultt = @mysqli_query($conn,$queryy);
+                if(mysqli_num_rows($resultt)==1)
                 {
-                $roww = mysql_fetch_assoc($resultt);
+                $roww = mysqli_fetch_assoc($resultt);
                 }
                 ?>
                 <div class="w3-container">
@@ -85,7 +85,7 @@ $query = "select * from $subject";
             <p class="error" style="text-align:center;">Note : Attempt All Questions.</p>
             <div id="accordion">
                 <?php
-                    while ($row = mysql_fetch_assoc($result)) { 
+                    while ($row = mysqli_fetch_assoc($result)) { 
                 ?>
                 <p>Question No. <?php echo $row['sno']; ?></p>
                 <div>
